@@ -9,7 +9,7 @@ def baidu_search(keyword):
     params = {'wd': keyword, 'pn': 0, 'ie': 'utf-8'}
     try:
         while 1:
-            for i in r.findall(requests.get(url, params, headers = headers).content)
+            for i in r.findall(requests.get(url, params, headers = headers).content):
                 yield (re.compile('<.*?>').sub('', i[1]).decode('utf8'), i[0])
             params['pn'] += 10
     except GeneratorExit:
